@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+/* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
@@ -30,4 +30,14 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+} */
+
+.custom-red-dot {
+  background-color: rgb(255, 149, 0); /* Red background */
+  border-radius: 50%; 
+  /* Rounded shape for dot */
+  width: 15px; /* Diameter of the dot */
+  height: 15px;
+  opacity: 0.9;
+  
 }
