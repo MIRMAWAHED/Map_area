@@ -349,9 +349,9 @@ export default function Home() {
   // Function to capture an image from webcam
   const capture = async () => {
     // Retrieve geolocation coordinates
-    navigator.geolocation.getCurrentPosition(
-      async (position) => {
-        const { latitude, longitude } = position.coords;
+    // navigator.geolocation.getCurrentPosition(
+      // async (position) => {
+        const { latitude, longitude } = coords;
         const imageSrc = webcamRef.current.getScreenshot();
 
         // Update captured images and their coordinates
@@ -367,12 +367,12 @@ export default function Home() {
         } else {
           setState(false); // Disable webcam after capturing all points
         }
-      },
-      (error) => {
-        console.error('Error getting geolocation:', error);
-        // Handle error getting geolocation
-      }
-    );
+      // },
+      // (error) => {
+      //   console.error('Error getting geolocation:', error);
+      //   // Handle error getting geolocation
+      // }
+    // );
   };
 
   // Function to toggle between front and back cameras
