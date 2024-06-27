@@ -224,6 +224,7 @@ import Webcam from 'react-webcam'; // Importing webcam component
 // import MapComponent from '../components/MapComponent'; // Assuming MapComponent is a default export
 import { useGeolocated } from 'react-geolocated';
 import * as turf from '@turf/turf';
+import Link from "next/link";
 // const Webcam = dynamic(() => import('react-webcam'), { ssr: false });
 const MapComponent = dynamic(() => import('../components/MapComponent'), { ssr: false });
 
@@ -261,6 +262,8 @@ export default function Home() {
       enableHighAccuracy: true,
     },
     userDecisionTimeout: 5000,
+    maximumAge: 0 // Do not use a cached position
+
   });
 
   const [data, setData] = useState([]); // State to hold captured images with coordinates
@@ -349,9 +352,9 @@ export default function Home() {
   // Function to capture an image from webcam
   const capture = async () => {
     // Retrieve geolocation coordinates
-    // navigator.geolocation.getCurrentPosition(
-      // async (position) => {
-        const { latitude, longitude } = coords;
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        const { latitude, longitude } = position.coords;
         const imageSrc = webcamRef.current.getScreenshot();
 
         // Update captured images and their coordinates
@@ -367,12 +370,12 @@ export default function Home() {
         } else {
           setState(false); // Disable webcam after capturing all points
         }
-      // },
-      // (error) => {
-      //   console.error('Error getting geolocation:', error);
-      //   // Handle error getting geolocation
-      // }
-    // );
+      },
+      (error) => {
+        console.error('Error getting geolocation:', error);
+        // Handle error getting geolocation
+      }
+    );
   };
 
   // Function to toggle between front and back cameras
@@ -422,7 +425,7 @@ export default function Home() {
           ))}
         </div>
       </div>
-
+      <Link href={'/LivePage'}>Live Tracking</Link>
     </main>
   );
 }

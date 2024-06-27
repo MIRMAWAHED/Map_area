@@ -94,29 +94,7 @@ const LeafletMap = ({ data }) => {
     };
 
     return (
-        // <MapContainer center={mapCenter} zoom={zoom} style={{ height: '67vh', width: '100%' }} ref={mapRef}>
-        //     <UpdateMapCenter center={mapCenter} />
-        //     <TileLayer
-        //         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        //         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        //     />
-        //     {data.map((item,index) => {
-        //         // Check if lat and lng are defined
-        //         if (typeof item.lat !== 'undefined' && typeof item.lng !== 'undefined') {
-        //            console.log('bee')
-        //             return (
-        //                 <Marker key={item.id} position={[item.lat, item.lng]}  icon={customIcon}  eventHandlers={{ click: () => handleMarkerClick(item.lat, item.lng) }}>
-        //                     <Popup>
-        //                         {name[index]}
-        //                     </Popup>
-        //                 </Marker>
-        //             );
-        //         } else {
-        //             console.warn(`Invalid LatLng object: (${item.lat}, ${item.lng})`);
-        //             return null; // or handle the case of undefined lat or lng
-        //         }
-        //     })}
-        // </MapContainer>
+      
         <MapContainer center={mapCenter} zoom={zoom} style={{ height: '67vh', width: '100%' }} ref={mapRef}>
             <UpdateMapCenter center={mapCenter} />
             <TileLayer
@@ -144,33 +122,3 @@ const LeafletMap = ({ data }) => {
 };
 
 export default LeafletMap;
-// components/MapComponent.js
-// import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-// import 'leaflet/dist/leaflet.css';
-// import L from 'leaflet';
-
-// // Fix for default marker icon issue in leaflet with React
-// delete L.Icon.Default.prototype._getIconUrl;
-// L.Icon.Default.mergeOptions({
-//   iconRetinaUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png',
-//   iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
-//   shadowUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png',
-// });
-
-// const MapComponent = ({ points }) => {
-//   return (
-//     <MapContainer center={[39.8283, -98.5795]} zoom={4} style={{ height: '100vh', width: '100%' }}>
-//       <TileLayer
-//         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-//         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-//       />
-//       {points.map((point, index) => (
-//         <Marker key={index} position={[point.lat, point.lng]}>
-//           <Popup>{point.popup}</Popup>
-//         </Marker>
-//       ))}
-//     </MapContainer>
-//   );
-// };
-
-// export default MapComponent;
